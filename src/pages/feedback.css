@@ -1,0 +1,70 @@
+.recievable-status-paid {
+    width: 200px;
+    border: 1px #47df12 solid;
+    display: flex;
+    cursor: pointer;
+  }
+  .recievable-status-unpaid {
+    width: 200px;
+    border: 1px #df1212 solid;
+    display: flex;
+    cursor: pointer;
+
+  }
+  .paid-paid {
+    width: 100px;
+    height:40px;
+    background: #47df12;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .paid-unpaid {
+    width: 100px;
+    height:40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .paid-paid > p {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    color: #ffffff;
+  }
+  .paid-unpaid > p {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    color: #838383;
+  }
+  .unpaid-paid {
+    width: 100px;
+    height:40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .unpaid-unpaid {
+    width: 100px;
+    height:40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #df1212;
+  }
+  .unpaid-paid > p {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    color: #838383;
+  }
+  .unpaid-unpaid > p {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    color: #ffffff;
+  }
+  .button{
+    outline: none;
+  }
