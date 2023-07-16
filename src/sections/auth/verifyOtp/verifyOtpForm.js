@@ -44,6 +44,7 @@ export default function OtpForm() {
         const user = retrieveData('user');
         const resp = await axiosApi('post', '/auth/signup', { ...user, ...data });
         if (resp) {
+          
           storeData('user', resp.data.user);
           setUser(resp.data.user);
           storeData('token', resp.data.token);

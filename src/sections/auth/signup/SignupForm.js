@@ -85,13 +85,13 @@ export default function SignupForm() {
         if (resp) {
           showSnackBar(resp.message, 'success');
           navigate('/verifyOtp');
-          storeData('user', data)
+          storeData('user', data);
           setLoading(false);
         }
       } catch (err) {
         console.log(err);
         showSnackBar(err.message, 'error');
-        setLoading(false)
+        setLoading(false);
       }
     }
   };
@@ -211,6 +211,7 @@ export default function SignupForm() {
                   <MenuItem value={'Seller'}>Seller</MenuItem>
                   <MenuItem value={'Purchaser'}>Purchaser</MenuItem>
                   <MenuItem value={'Supplier'}>Supplier</MenuItem>
+                  <MenuItem value={'Distributer'}>Distributer</MenuItem>
                 </Select>
               )}
             />

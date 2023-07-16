@@ -17,6 +17,8 @@ import navConfig from './config';
 import sellerConfig from './sellerConfig';
 import { useAuth } from 'src/hooks/useAuth';
 import purchaserConfig from './purchaserConfig';
+import supplierConfig from './supplierConfig';
+import distributerConfig from './distributerConfig';
 
 // ----------------------------------------------------------------------
 
@@ -46,6 +48,10 @@ export default function Nav({ openNav, onCloseNav }) {
       return sellerConfig;
     } else if (user.role === 'Purchaser') {
       return purchaserConfig;
+    } else if (user?.role === 'Supplier') {
+      return supplierConfig;
+    } else if (user?.role === 'Distributer') {
+      return distributerConfig;
     } else {
       return navConfig;
     }
@@ -67,15 +73,14 @@ export default function Nav({ openNav, onCloseNav }) {
         '& .simplebar-content': { height: 1, display: 'flex', flexDirection: 'column' },
       }}
     >
-      <Box sx={{ px: 2.5, py: 3, display: 'inline-flex' }}>
+      {/* <Box sx={{ px: 2.5, py: 3, display: 'inline-flex' }}>
         <Logo />
-      </Box>
+      </Box> */}
 
-      <Box sx={{ mb: 5, mx: 2.5 }}>
+      <Box sx={{ mb: 5, mx: 2.5, mt: 2 }}>
         <Link underline="none">
           <StyledAccount>
             <Avatar src={account.photoURL} alt="photoURL" />
-
             <Box sx={{ ml: 2 }}>
               <Typography variant="subtitle2" sx={{ color: 'text.primary' }}>
                 {account.displayName}

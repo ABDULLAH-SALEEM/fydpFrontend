@@ -17,7 +17,7 @@ import { UserListHead } from 'src/sections/@dashboard/user';
 const SellersListTable = ({data, onViewButtonClicked}) => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
-  
+  console.log(data)
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
@@ -28,7 +28,7 @@ const SellersListTable = ({data, onViewButtonClicked}) => {
   const TABLE_HEAD = [
     { id: 'name', label: 'Name', alignRight: false },
     { id: 'email', label: 'Email', alignRight: false },
-    { id: 'country', label: 'Country', alignRight: false },
+    { id: 'companyName', label: 'Company', alignRight: false },
     { id: 'contact', label: 'Contact Number', alignRight: false },
     { id: 'ratings', label: 'Ratings', alignRight: false },
     { id: 'action', label: 'Action', alignRight: false },
@@ -56,14 +56,14 @@ const SellersListTable = ({data, onViewButtonClicked}) => {
             )}
             <TableBody>
               {data?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)?.map((row, index) => {
-                const { email, name, country, contact, _id, ratings } = row;
+                const { email, firstname,lastname, companyName, number, _id, ratings } = row;
                 return (
                   <TableRow key={index}>
-                    <TableCell align="left">{name}</TableCell>
+                    <TableCell align="left">{firstname+' '+lastname}</TableCell>
                     <TableCell align="left">{email}</TableCell>
-                    <TableCell align="left">{country}</TableCell>
-                    <TableCell align="left">{contact}</TableCell>
-                    <TableCell align="left">{ratings}</TableCell>
+                    <TableCell align="left">{companyName}</TableCell>
+                    <TableCell align="left">{number}</TableCell>
+                    <TableCell align="left">{ratings?ratings:'N/A'}</TableCell>
                     <TableCell style={{ display: 'flex' }} align="center">
                       <IconButton onClick={()=>onViewButtonClicked(_id )}>
                         <VisibilityIcon  />

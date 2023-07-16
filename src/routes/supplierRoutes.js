@@ -1,0 +1,42 @@
+import { Navigate, useRoutes } from 'react-router-dom';
+// layouts
+import DashboardLayout from '../layouts/dashboard';
+import SimpleLayout from '../layouts/simple';
+//
+// import FeedbackPage from '../pages/FeedbackPage';
+import Page404 from '../pages/Page404';
+import SupplierDashboard from 'src/pages/Supplier/Dashboard';
+import SupplierAssignments from 'src/pages/Supplier/Assignment';
+import SupplierProducts from 'src/pages/Supplier/Products';
+
+// ----------------------------------------------------------------------
+
+export default function SupplierRouter() {
+ 
+  const routes = useRoutes([
+    {
+      path: '/dashboard',
+      element: <DashboardLayout />,
+      children: [
+        { element: <Navigate to="/dashboard/app" />, index: true },
+        { path: 'app', element: <SupplierDashboard /> },
+        { path: 'assignments', element: <SupplierAssignments /> },
+        { path: 'products', element: <SupplierProducts /> },
+      ],
+    },
+    {
+      element: <SimpleLayout />,
+      children: [
+        { element: <Navigate to="/dashboard/app" />, index: true },
+        { path: '404', element: <Page404 /> },
+        { path: '*', element: <Navigate to="/404" /> },
+      ],
+    },
+    {
+      path: '*',
+      element: <Navigate to="/404" replace />,
+    },
+  ]);
+
+  return routes;
+}

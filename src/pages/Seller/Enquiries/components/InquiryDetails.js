@@ -1,9 +1,11 @@
 import React from 'react';
-import { Dialog, DialogTitle, DialogContent, DialogActions, Stack, Typography, Avatar } from '@mui/material';
+import { Dialog, DialogTitle, DialogContent, DialogActions, Stack, Typography, Avatar, Button } from '@mui/material';
 import LoaderButton from 'src/components/loader/LoaderButton';
+import { useAuth } from 'src/hooks/useAuth';
 
-const InquiryDetails = ({ handleClose, open, data }) => {
-  const { product, quantity, address, phoneNumber, email, name, req } = data;
+const InquiryDetails = ({ handleClose, open, data, onQuotationButtonClicked }) => {
+  const { user } = useAuth();
+  const { product, quantity, address, phoneNumber, email, name, req, status } = data;
   return (
     <Dialog open={open} onClose={handleClose}>
       <DialogTitle>{'Details'}</DialogTitle>
@@ -38,7 +40,13 @@ const InquiryDetails = ({ handleClose, open, data }) => {
         <Typography>{req}</Typography>
       </DialogContent>
       <DialogActions>
-        <LoaderButton text={'Send Quotation'} />
+        {user.role !== 'Purchaser' &&
+          status !==
+            'answered'&&(
+              <Button variant="contained" onClick={onQuotationButtonClicked}>
+                Send quotation
+              </Button>
+            )}
       </DialogActions>
     </Dialog>
   );

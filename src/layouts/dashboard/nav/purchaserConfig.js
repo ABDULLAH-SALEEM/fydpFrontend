@@ -23,6 +23,11 @@ const  purchaserConfig = [
       icon: icon('faq'),
     },
     {
+      title: 'Quotations',
+      path: '/dashboard/quotations',
+      icon: icon('faq'),
+    },
+    {
       title: 'Orders',
       path: '/dashboard/orders',
       icon: icon('faq'),

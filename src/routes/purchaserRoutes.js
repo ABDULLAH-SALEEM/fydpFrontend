@@ -9,6 +9,7 @@ import PurchaserDashboard from 'src/pages/Purchaser/Dashboard';
 import SellerList from 'src/pages/Purchaser/SellersList';
 import Inquiry from 'src/pages/Purchaser/Inquiry';
 import Orders from 'src/pages/Purchaser/Orders';
+import PurchaserQuotations from 'src/pages/Purchaser/Quotation';
 
 // ----------------------------------------------------------------------
 
@@ -23,6 +24,7 @@ export default function PurchaserRouter() {
         { path: 'app', element: <PurchaserDashboard /> },
         { path: 'sellers', element: <SellerList /> },
         { path: 'inquiry', element: <Inquiry /> },
+        { path: 'quotations', element: <PurchaserQuotations /> },
         { path: 'orders', element: <Orders /> },
         // { path: 'quotations', element: <SellerQuotations /> },
         // { path: 'feedback', element: <FeedbackPage /> },
