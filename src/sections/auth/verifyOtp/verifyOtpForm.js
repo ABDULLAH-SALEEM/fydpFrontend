@@ -11,7 +11,279 @@ import { axiosApi } from 'src/service/apiEnviornment';
 import { retrieveData, storeData } from 'src/helper/storageHelper';
 import { useSnack } from 'src/hooks/useSnack';
 import { useAuth } from 'src/hooks/useAuth';
+import Web3 from 'web3';
+import { ethers } from "ethers";
+// const ethers = require("ethers")
 // ----------------------------------------------------------------------
+const contractAddress = '0x22b951317eD61B716F260eAf25D2287032a5ec8A'; // Replace with your contract address
+  const contractABI =[
+    {
+      "inputs": [],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [],
+      "name": "creationTime",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "enum admin_manufacture.Role",
+          "name": "role",
+          "type": "uint8"
+        }
+      ],
+      "name": "getRoleName",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "pure",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "userAddress",
+          "type": "address"
+        }
+      ],
+      "name": "getUser",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "firstname",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "lastname",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "companyName",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "email",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "number",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "password",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "roleName",
+          "type": "string"
+        },
+        {
+          "internalType": "address",
+          "name": "walletAddress",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "email",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "password",
+          "type": "string"
+        }
+      ],
+      "name": "getUserByEmailAndPassword",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "firstname",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "lastname",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "companyName",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "number",
+          "type": "string"
+        },
+        {
+          "internalType": "enum admin_manufacture.Role",
+          "name": "role",
+          "type": "uint8"
+        },
+        {
+          "internalType": "address",
+          "name": "walletAddress",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "firstname",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "lastname",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "companyName",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "email",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "number",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "password",
+          "type": "string"
+        },
+        {
+          "internalType": "enum admin_manufacture.Role",
+          "name": "role",
+          "type": "uint8"
+        }
+      ],
+      "name": "registerUser",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "userCount",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "users",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "firstname",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "lastname",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "companyName",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "email",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "number",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "password",
+          "type": "string"
+        },
+        {
+          "internalType": "enum admin_manufacture.Role",
+          "name": "role",
+          "type": "uint8"
+        },
+        {
+          "internalType": "address",
+          "name": "walletAddress",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ]; // Replace with your contract ABI
+
+
+
 const defaultValues = {
   otp: '',
 };
@@ -20,6 +292,14 @@ export default function OtpForm() {
   const { showSnackBar } = useSnack();
   const [loading, setLoading] = useState();
   const { setUser } = useAuth();
+
+ //web3 initialization
+ const web3 = new Web3(window.ethereum);
+ const provider = new ethers.providers.Web3Provider(window.ethereum);
+ const signer = provider.getSigner();
+ const contract = new ethers.Contract(contractAddress, contractABI, signer);
+
+
 
   const schema = yup.object().shape({
     otp: yup.string().required('This field is required'),
@@ -36,12 +316,58 @@ export default function OtpForm() {
     mode: 'onChange',
     resolver: yupResolver(schema),
   });
+
+const signupContract = async () =>{
+  try {
+    await window.ethereum.enable();
+    const user = retrieveData('user');
+
+    let roleValue;
+if (user.role === 'Seller') {
+  roleValue = 0;
+} else if (user.role === 'Purchaser') {
+  roleValue = 1;
+} else if (user.role === 'Supplier') {
+  roleValue = 2;
+} else if (user.role === 'Distributor') {
+  roleValue = 3;
+} else {
+  console.error('Invalid role');
+  return;
+}
+
+    await contract.registerUser(
+      user.firstname,
+      user.lastname,
+      user.companyName,
+      user.email,
+      user.number,
+      user.password,
+      roleValue
+    );
+    const roleName = await contract.getRoleName(roleValue);
+    const userAddress = await web3.eth.getAccounts().then(accounts => accounts[0]);
+    const result = await contract.getUser(userAddress);
+    const [userFirstName, userLastName, userCompanyName, userEmail, userPhoneNumber, userPassword, userRole, walletAddress] = result;
+
+console.log (userAddress);
+    console.log('User registered successfully!');
+    console.log('Role:', roleName);
+    console.log('Wallet Address:', walletAddress);
+storeData("blockchainUser", {roleName, userAddress})
+  } catch (error) {
+    console.error('Error registering user:', error);
+  };
+}
+
+
   const createAccount = async (data) => {
     if (data) {
       if (loading) return;
       setLoading(true);
       try {
         const user = retrieveData('user');
+        await signupContract();
         const resp = await axiosApi('post', '/auth/signup', { ...user, ...data });
         if (resp) {
           

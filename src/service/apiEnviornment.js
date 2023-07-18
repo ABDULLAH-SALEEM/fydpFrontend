@@ -1,6 +1,6 @@
 import axios from "axios";
 import { getToken } from "../helper/tokenHelper";
-const baseUrl = "http://192.168.0.104:5000/api/v1";
+const baseUrl = "http://localhost:5000/api/v1";
 // const baseUrl='https://fydp-alpha.vercel.app/api/v1'
 
 
