@@ -8,6 +8,11 @@ import { useSnack } from 'src/hooks/useSnack';
 import { useNavigate } from 'react-router-dom';
 import { useInquiry } from 'src/hooks/useInquiry';
 import { useOrder } from 'src/hooks/useOrder';
+import myABI from '../../../../contracts/Owner.json'
+import { OwnerContractAddress } from 'src/contracts/Constants';
+import Web3 from 'web3';
+import { ethers } from "ethers";
+
 
 const style = {
   position: 'absolute',
@@ -23,6 +28,8 @@ const style = {
   p: 4,
 };
 
+
+
 const QuotationDetails = ({ data, open, handleChange, quotationUser }) => {
   const { user } = useAuth();
   const [status, setStatus] = useState(data?.status);
@@ -32,6 +39,19 @@ const QuotationDetails = ({ data, open, handleChange, quotationUser }) => {
   const { createOrder } = useOrder();
   const { showSnackBar } = useSnack();
   const navigate = useNavigate();
+
+  
+ //web3 initialization
+ const web3 = new Web3(window.ethereum);
+ const provider = new ethers.providers.Web3Provider(window.ethereum);
+ const signer = provider.getSigner();
+ const contract = new ethers.Contract(OwnerContractAddress, myABI , signer);
+
+const createBlockChainOrder = async (ID) =>{
+  await window.ethereum.enable();
+  const checkVar = await contract.createPayOrder(ID)
+  console.log(checkVar)
+}
 
   const handleStatusChange = (event) => {
     setStatus(event.target.value);
@@ -74,6 +94,8 @@ const QuotationDetails = ({ data, open, handleChange, quotationUser }) => {
       updateQuotation(data?._id, updatedQuotation);
       const resp = await createOrder(newData);
       if (resp) {
+        console.log(resp.data._id)
+        await createBlockChainOrder(resp.data._id) 
         setLoading(false);
         showSnackBar(resp.message, 'success');
         navigate('/dashboard/orders');

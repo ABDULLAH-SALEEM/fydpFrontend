@@ -16,7 +16,7 @@ import { ethers } from "ethers";
 // const ethers = require("ethers")
 // ----------------------------------------------------------------------
 const contractAddress = '0x22b951317eD61B716F260eAf25D2287032a5ec8A'; // Replace with your contract address
-  const contractABI =[
+const contractABI =[
     {
       "inputs": [],
       "stateMutability": "nonpayable",
