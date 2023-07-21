@@ -13,275 +13,276 @@ import { useSnack } from 'src/hooks/useSnack';
 import { useAuth } from 'src/hooks/useAuth';
 import Web3 from 'web3';
 import { ethers } from "ethers";
+import AuthAbi from '../../../contracts/Auth.json'
+import { AdminAuthContractAddress } from 'src/contracts/Constants';
 // const ethers = require("ethers")
 // ----------------------------------------------------------------------
-const contractAddress = '0x22b951317eD61B716F260eAf25D2287032a5ec8A'; // Replace with your contract address
-const contractABI =[
-    {
-      "inputs": [],
-      "stateMutability": "nonpayable",
-      "type": "constructor"
-    },
-    {
-      "inputs": [],
-      "name": "creationTime",
-      "outputs": [
-        {
-          "internalType": "uint256",
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "enum admin_manufacture.Role",
-          "name": "role",
-          "type": "uint8"
-        }
-      ],
-      "name": "getRoleName",
-      "outputs": [
-        {
-          "internalType": "string",
-          "name": "",
-          "type": "string"
-        }
-      ],
-      "stateMutability": "pure",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "address",
-          "name": "userAddress",
-          "type": "address"
-        }
-      ],
-      "name": "getUser",
-      "outputs": [
-        {
-          "internalType": "string",
-          "name": "firstname",
-          "type": "string"
-        },
-        {
-          "internalType": "string",
-          "name": "lastname",
-          "type": "string"
-        },
-        {
-          "internalType": "string",
-          "name": "companyName",
-          "type": "string"
-        },
-        {
-          "internalType": "string",
-          "name": "email",
-          "type": "string"
-        },
-        {
-          "internalType": "string",
-          "name": "number",
-          "type": "string"
-        },
-        {
-          "internalType": "string",
-          "name": "password",
-          "type": "string"
-        },
-        {
-          "internalType": "string",
-          "name": "roleName",
-          "type": "string"
-        },
-        {
-          "internalType": "address",
-          "name": "walletAddress",
-          "type": "address"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "string",
-          "name": "email",
-          "type": "string"
-        },
-        {
-          "internalType": "string",
-          "name": "password",
-          "type": "string"
-        }
-      ],
-      "name": "getUserByEmailAndPassword",
-      "outputs": [
-        {
-          "internalType": "string",
-          "name": "firstname",
-          "type": "string"
-        },
-        {
-          "internalType": "string",
-          "name": "lastname",
-          "type": "string"
-        },
-        {
-          "internalType": "string",
-          "name": "companyName",
-          "type": "string"
-        },
-        {
-          "internalType": "string",
-          "name": "number",
-          "type": "string"
-        },
-        {
-          "internalType": "enum admin_manufacture.Role",
-          "name": "role",
-          "type": "uint8"
-        },
-        {
-          "internalType": "address",
-          "name": "walletAddress",
-          "type": "address"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "owner",
-      "outputs": [
-        {
-          "internalType": "address",
-          "name": "",
-          "type": "address"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "string",
-          "name": "firstname",
-          "type": "string"
-        },
-        {
-          "internalType": "string",
-          "name": "lastname",
-          "type": "string"
-        },
-        {
-          "internalType": "string",
-          "name": "companyName",
-          "type": "string"
-        },
-        {
-          "internalType": "string",
-          "name": "email",
-          "type": "string"
-        },
-        {
-          "internalType": "string",
-          "name": "number",
-          "type": "string"
-        },
-        {
-          "internalType": "string",
-          "name": "password",
-          "type": "string"
-        },
-        {
-          "internalType": "enum admin_manufacture.Role",
-          "name": "role",
-          "type": "uint8"
-        }
-      ],
-      "name": "registerUser",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "userCount",
-      "outputs": [
-        {
-          "internalType": "uint256",
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "address",
-          "name": "",
-          "type": "address"
-        }
-      ],
-      "name": "users",
-      "outputs": [
-        {
-          "internalType": "string",
-          "name": "firstname",
-          "type": "string"
-        },
-        {
-          "internalType": "string",
-          "name": "lastname",
-          "type": "string"
-        },
-        {
-          "internalType": "string",
-          "name": "companyName",
-          "type": "string"
-        },
-        {
-          "internalType": "string",
-          "name": "email",
-          "type": "string"
-        },
-        {
-          "internalType": "string",
-          "name": "number",
-          "type": "string"
-        },
-        {
-          "internalType": "string",
-          "name": "password",
-          "type": "string"
-        },
-        {
-          "internalType": "enum admin_manufacture.Role",
-          "name": "role",
-          "type": "uint8"
-        },
-        {
-          "internalType": "address",
-          "name": "walletAddress",
-          "type": "address"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    }
-  ]; // Replace with your contract ABI
-
+// const contractAddress = '0x22b951317eD61B716F260eAf25D2287032a5ec8A'; // Replace with your contract address
+// const contractABI =[
+//     {
+//       "inputs": [],
+//       "stateMutability": "nonpayable",
+//       "type": "constructor"
+//     },
+//     {
+//       "inputs": [],
+//       "name": "creationTime",
+//       "outputs": [
+//         {
+//           "internalType": "uint256",
+//           "name": "",
+//           "type": "uint256"
+//         }
+//       ],
+//       "stateMutability": "view",
+//       "type": "function"
+//     },
+//     {
+//       "inputs": [
+//         {
+//           "internalType": "enum admin_manufacture.Role",
+//           "name": "role",
+//           "type": "uint8"
+//         }
+//       ],
+//       "name": "getRoleName",
+//       "outputs": [
+//         {
+//           "internalType": "string",
+//           "name": "",
+//           "type": "string"
+//         }
+//       ],
+//       "stateMutability": "pure",
+//       "type": "function"
+//     },
+//     {
+//       "inputs": [
+//         {
+//           "internalType": "address",
+//           "name": "userAddress",
+//           "type": "address"
+//         }
+//       ],
+//       "name": "getUser",
+//       "outputs": [
+//         {
+//           "internalType": "string",
+//           "name": "firstname",
+//           "type": "string"
+//         },
+//         {
+//           "internalType": "string",
+//           "name": "lastname",
+//           "type": "string"
+//         },
+//         {
+//           "internalType": "string",
+//           "name": "companyName",
+//           "type": "string"
+//         },
+//         {
+//           "internalType": "string",
+//           "name": "email",
+//           "type": "string"
+//         },
+//         {
+//           "internalType": "string",
+//           "name": "number",
+//           "type": "string"
+//         },
+//         {
+//           "internalType": "string",
+//           "name": "password",
+//           "type": "string"
+//         },
+//         {
+//           "internalType": "string",
+//           "name": "roleName",
+//           "type": "string"
+//         },
+//         {
+//           "internalType": "address",
+//           "name": "walletAddress",
+//           "type": "address"
+//         }
+//       ],
+//       "stateMutability": "view",
+//       "type": "function"
+//     },
+//     {
+//       "inputs": [
+//         {
+//           "internalType": "string",
+//           "name": "email",
+//           "type": "string"
+//         },
+//         {
+//           "internalType": "string",
+//           "name": "password",
+//           "type": "string"
+//         }
+//       ],
+//       "name": "getUserByEmailAndPassword",
+//       "outputs": [
+//         {
+//           "internalType": "string",
+//           "name": "firstname",
+//           "type": "string"
+//         },
+//         {
+//           "internalType": "string",
+//           "name": "lastname",
+//           "type": "string"
+//         },
+//         {
+//           "internalType": "string",
+//           "name": "companyName",
+//           "type": "string"
+//         },
+//         {
+//           "internalType": "string",
+//           "name": "number",
+//           "type": "string"
+//         },
+//         {
+//           "internalType": "enum admin_manufacture.Role",
+//           "name": "role",
+//           "type": "uint8"
+//         },
+//         {
+//           "internalType": "address",
+//           "name": "walletAddress",
+//           "type": "address"
+//         }
+//       ],
+//       "stateMutability": "view",
+//       "type": "function"
+//     },
+//     {
+//       "inputs": [],
+//       "name": "owner",
+//       "outputs": [
+//         {
+//           "internalType": "address",
+//           "name": "",
+//           "type": "address"
+//         }
+//       ],
+//       "stateMutability": "view",
+//       "type": "function"
+//     },
+//     {
+//       "inputs": [
+//         {
+//           "internalType": "string",
+//           "name": "firstname",
+//           "type": "string"
+//         },
+//         {
+//           "internalType": "string",
+//           "name": "lastname",
+//           "type": "string"
+//         },
+//         {
+//           "internalType": "string",
+//           "name": "companyName",
+//           "type": "string"
+//         },
+//         {
+//           "internalType": "string",
+//           "name": "email",
+//           "type": "string"
+//         },
+//         {
+//           "internalType": "string",
+//           "name": "number",
+//           "type": "string"
+//         },
+//         {
+//           "internalType": "string",
+//           "name": "password",
+//           "type": "string"
+//         },
+//         {
+//           "internalType": "enum admin_manufacture.Role",
+//           "name": "role",
+//           "type": "uint8"
+//         }
+//       ],
+//       "name": "registerUser",
+//       "outputs": [],
+//       "stateMutability": "nonpayable",
+//       "type": "function"
+//     },
+//     {
+//       "inputs": [],
+//       "name": "userCount",
+//       "outputs": [
+//         {
+//           "internalType": "uint256",
+//           "name": "",
+//           "type": "uint256"
+//         }
+//       ],
+//       "stateMutability": "view",
+//       "type": "function"
+//     },
+//     {
+//       "inputs": [
+//         {
+//           "internalType": "address",
+//           "name": "",
+//           "type": "address"
+//         }
+//       ],
+//       "name": "users",
+//       "outputs": [
+//         {
+//           "internalType": "string",
+//           "name": "firstname",
+//           "type": "string"
+//         },
+//         {
+//           "internalType": "string",
+//           "name": "lastname",
+//           "type": "string"
+//         },
+//         {
+//           "internalType": "string",
+//           "name": "companyName",
+//           "type": "string"
+//         },
+//         {
+//           "internalType": "string",
+//           "name": "email",
+//           "type": "string"
+//         },
+//         {
+//           "internalType": "string",
+//           "name": "number",
+//           "type": "string"
+//         },
+//         {
+//           "internalType": "string",
+//           "name": "password",
+//           "type": "string"
+//         },
+//         {
+//           "internalType": "enum admin_manufacture.Role",
+//           "name": "role",
+//           "type": "uint8"
+//         },
+//         {
+//           "internalType": "address",
+//           "name": "walletAddress",
+//           "type": "address"
+//         }
+//       ],
+//       "stateMutability": "view",
+//       "type": "function"
+//     }
+//   ]; // Replace with your contract ABI
 
 
 const defaultValues = {
@@ -297,7 +298,8 @@ export default function OtpForm() {
  const web3 = new Web3(window.ethereum);
  const provider = new ethers.providers.Web3Provider(window.ethereum);
  const signer = provider.getSigner();
- const contract = new ethers.Contract(contractAddress, contractABI, signer);
+ const contract = new ethers.Contract(AdminAuthContractAddress, AuthAbi, signer);
+// const contract = new ethers.Contract(contractAddress, contractABI, signer);
 
 
 
@@ -367,7 +369,7 @@ storeData("blockchainUser", {roleName, userAddress})
       setLoading(true);
       try {
         const user = retrieveData('user');
-        await signupContract();
+        // await signupContract();
         const resp = await axiosApi('post', '/auth/signup', { ...user, ...data });
         if (resp) {
           

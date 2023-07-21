@@ -56,7 +56,9 @@ const SupplierDetails = ({ handleClose, open, data, onClick }) => {
   const verifyTransfer = async (id) => {
     console.log('dfefefefefe');
     // await window.ethereum.enable();
-    const checkVar2 = await contract.getOwnershipTransfersByOrder('64ba7ba04a8d2bcb8ebd7627');
+    const vard="64ba8f9549600e42e0b43cea"
+    // const checkVar2 = await contract.getVal();
+    const checkVar2 = await contract.getOwnershipTransfersByOrder('64ba8f9549600e42e0b43cea');
     console.log(checkVar2);
   };
 
@@ -146,8 +148,13 @@ const SupplierDetails = ({ handleClose, open, data, onClick }) => {
           disabled={loading}
           text={'assign order'}
           buttonProps={{ variant: 'contained' }}
-          onClick={onSubmit}
-          // onClick={verifyTransfer}
+          // onClick={onSubmit}
+          onClick={verifyTransfer 
+          //   () =>{
+          //   verifyTransfer('64ba8f9549600e42e0b43cea')
+          // }
+          
+        }
         />
       </DialogActions>
     </Dialog>
