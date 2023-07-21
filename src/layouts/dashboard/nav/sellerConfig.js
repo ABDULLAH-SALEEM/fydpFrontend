@@ -15,32 +15,27 @@ const selerConfig = [
   {
     title: 'inquiries',
     path: '/dashboard/inquiries',
-    icon: icon('faq'),
+    icon: icon('inquiry'),
   },
   {
     title: 'Quotations',
     path: '/dashboard/quotations',
-    icon: icon('footer'),
-  },
-  {
-    title: 'Products',
-    path: '/dashboard/products',
-    icon: icon('footer'),
+    icon: icon('quotation'),
   },
   {
     title: 'Orders',
     path: '/dashboard/orders',
-    icon: icon('footer'),
+    icon: icon('order'),
   },
   {
     title: 'Suppliers',
     path: '/dashboard/supplier',
-    icon: icon('footer'),
+    icon: icon('supplier'),
   },
   {
     title: 'Distributer',
     path: '/dashboard/distributer',
-    icon: icon('footer'),
+    icon: icon('distributer'),
   },
 ];
 

@@ -4,6 +4,7 @@ import Page404 from '../pages/Page404';
 import SimpleLayout from '../layouts/simple';
 import SignInPage from 'src/pages/Common/SignIn';
 import SignUpPage from 'src/pages/Common/Signup';
+import HomePage from 'src/pages/Common/HomePage';
 import VerifyOtpPage from 'src/pages/Common/verifyOtp';
 
 // ----------------------------------------------------------------------
@@ -12,6 +13,10 @@ export default function AuthRouter() {
   const routes = useRoutes([
     {
       path: '/',
+      element: <HomePage />,
+    },
+    {
+      path: '/signin',
       element: <SignInPage />,
     },
     {

@@ -15,7 +15,7 @@ const distributerConfig = [
   {
     title: 'shipments',
     path: '/dashboard/shipments',
-    icon: icon('faq'),
+    icon: icon('shipment'),
   },
 ];
 

@@ -15,13 +15,13 @@ const  supplierConfig = [
     {
       title: 'Assignments',
       path: '/dashboard/assignments',
-      icon: icon('faq'),
+      icon: icon('assignment'),
     },
 
     {
         title: 'Products',
         path: '/dashboard/products',
-        icon: icon('faq'),
+        icon: icon('product'),
       },
    
   ];

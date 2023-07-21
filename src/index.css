@@ -84,3 +84,9 @@ p {
   .ql-toolbar.ql-snow .ql-picker-label {
     overflow: hidden !important;
 }
+
+
+.MuiButtonBase-root:hover{
+  background-color: #70ab32 !important;
+  color: white;
+}

@@ -15,22 +15,22 @@ const  purchaserConfig = [
     {
       title: 'sellers',
       path: '/dashboard/sellers',
-      icon: icon('faq'),
+      icon: icon('seller'),
     },
     {
       title: 'Inquiries',
       path: '/dashboard/inquiry',
-      icon: icon('faq'),
+      icon: icon('inquiry'),
     },
     {
       title: 'Quotations',
       path: '/dashboard/quotations',
-      icon: icon('faq'),
+      icon: icon('quotation'),
     },
     {
       title: 'Orders',
       path: '/dashboard/orders',
-      icon: icon('faq'),
+      icon: icon('order'),
     },
   ];
 
