@@ -17,6 +17,10 @@ import { useSnack } from 'src/hooks/useSnack';
 import { useOrder } from 'src/hooks/useOrder';
 import { useAuth } from 'src/hooks/useAuth';
 import { useShipment } from 'src/hooks/useShipment';
+import myABI from '../../../../contracts/Owner.json';
+import { OwnerContractAddress } from 'src/contracts/Constants';
+import Web3 from 'web3';
+import { ethers } from 'ethers';
 
 const DistributerDetails = ({ handleClose, open, data, onClick }) => {
   const [orderId, setOrderId] = useState('');
@@ -28,6 +32,17 @@ const DistributerDetails = ({ handleClose, open, data, onClick }) => {
 
   const { createShipment } = useShipment();
   const { showSnackBar } = useSnack();
+
+  const web3 = new Web3(window.ethereum);
+  const provider = new ethers.providers.Web3Provider(window.ethereum);
+  const signer = provider.getSigner();
+  const contract = new ethers.Contract(OwnerContractAddress, myABI, signer);
+
+  const sendOrderFromSellerToDistributer = async (orderId, to, from, transferTime) => {
+    await window.ethereum.enable();
+    const checkVar = await contract.transferOwnershipToDistributor(orderId, to, from, transferTime);
+    console.log(checkVar);
+  };
 
   const handleOrderId = (event) => {
     setOrderId(event.target.value);
@@ -61,6 +76,8 @@ const DistributerDetails = ({ handleClose, open, data, onClick }) => {
       };
       const resp = await createShipment(body);
       if (resp) {
+        const date = new Date();
+        await sendOrderFromSellerToDistributer(orderId, data._id, user._id, date.toString());
         setLoading(false);
         showSnackBar(resp.message, 'success');
       }

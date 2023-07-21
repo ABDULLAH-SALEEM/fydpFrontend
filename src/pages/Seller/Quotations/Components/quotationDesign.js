@@ -62,7 +62,7 @@ const QuotationDesign = () => {
       };
       const resp = await createQuotation(data);
       if (resp) {
-        await updateInquiry(purchaserData._id, { status: 'answered' });
+        await updateInquiry(purchaserData._id, { status: 'Answered' });
         setLoading(false);
         showSnackBar(resp.message, 'success');
         removeData('quotationSendTo');

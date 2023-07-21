@@ -98,6 +98,42 @@
 				"type": "string"
 			}
 		],
+		"name": "getOrderStatus",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "string",
+						"name": "orderNumber",
+						"type": "string"
+					},
+					{
+						"internalType": "address payable",
+						"name": "currentOwner",
+						"type": "address"
+					},
+					{
+						"internalType": "enum SupplyChain.OrderStatus",
+						"name": "status",
+						"type": "uint8"
+					}
+				],
+				"internalType": "struct SupplyChain.PayOrder",
+				"name": "",
+				"type": "tuple"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "orderNumber",
+				"type": "string"
+			}
+		],
 		"name": "getOwnershipTransfersByOrder",
 		"outputs": [
 			{

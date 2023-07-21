@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Dialog,
   DialogTitle,
@@ -16,21 +16,16 @@ import { useAssignment } from 'src/hooks/useAssignment';
 import { useSnack } from 'src/hooks/useSnack';
 import { useOrder } from 'src/hooks/useOrder';
 import { useAuth } from 'src/hooks/useAuth';
-import myABI from '../../../../contracts/Owner.json'
+import myABI from '../../../../contracts/Owner.json';
 import { OwnerContractAddress } from 'src/contracts/Constants';
 import Web3 from 'web3';
-import { ethers } from "ethers";
-
-
-
+import { ethers } from 'ethers';
 
 const SupplierDetails = ({ handleClose, open, data, onClick }) => {
   const [orderId, setOrderId] = useState('');
   const [deadline, setDeadline] = useState('');
   const [loading, setLoading] = useState(false);
   const { user } = useAuth();
-
-  console.log(data._id)
 
   const { createAssignment } = useAssignment();
   const { showSnackBar } = useSnack();
@@ -46,23 +41,28 @@ const SupplierDetails = ({ handleClose, open, data, onClick }) => {
 
   const { products, address, number, email, firstname, lastname, companyName, ordersAssigned } = data;
 
-  
- //web3 initialization
- const web3 = new Web3(window.ethereum);
- const provider = new ethers.providers.Web3Provider(window.ethereum);
- const signer = provider.getSigner();
- const contract = new ethers.Contract(OwnerContractAddress, myABI , signer);
+  //web3 initialization
+  const web3 = new Web3(window.ethereum);
+  const provider = new ethers.providers.Web3Provider(window.ethereum);
+  const signer = provider.getSigner();
+  const contract = new ethers.Contract(OwnerContractAddress, myABI, signer);
 
- const transferToSupplier = async (ID,ToUser,FromUser,Time) =>{
-  await window.ethereum.enable();
-  const checkVar = await contract.sendPayOrderToExporter(ID,ToUser,FromUser,Time)
-  console.log(checkVar)
-}
+  const transferToSupplier = async (ID, ToUser, FromUser, Time) => {
+    await window.ethereum.enable();
+    const checkVar = await contract.requestRawMaterials(ID, ToUser, FromUser, Time);
+    console.log(checkVar);
+  };
 
-const verifyTransfer = async(ID)=>{
-  const checkVar2 = await contract.getOwnershipTransfersByOrder('64b96dbd0e9a36b425f14474')
-  console.log(checkVar2)
-}
+  const verifyTransfer = async (id) => {
+    console.log('dfefefefefe');
+    // await window.ethereum.enable();
+    const checkVar2 = await contract.getOwnershipTransfersByOrder('64ba7ba04a8d2bcb8ebd7627');
+    console.log(checkVar2);
+  };
+
+  // useEffect(() => {
+  //   verifyTransfer();
+  // }, []);
 
   const onSubmit = async () => {
     if (!orderId || !deadline) return;
@@ -78,12 +78,12 @@ const verifyTransfer = async(ID)=>{
       const resp = await createAssignment(body);
 
       if (resp) {
-        const date = new Date()
-        transferToSupplier(orderId,data._id,user._id,date.toString())
+        const date = new Date();
+        await transferToSupplier(orderId, data._id, user._id, date.toString());
+        // await verifyTransfer()
         await updateOrder(orderId, { status: 'preparing' });
         setLoading(false);
         showSnackBar(resp.message, 'success');
-        
       }
     } catch (err) {
       console.log(err);

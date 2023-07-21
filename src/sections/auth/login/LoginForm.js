@@ -335,8 +335,8 @@ const contract = new ethers.Contract(contractAddress, contractABI, signer);
   
         const user = await contract.getUserByEmailAndPassword(data.email, data.password);
         console.log('Logged in successfully!', user);
-        navigate(await login(data), { replace: true });
-        // await login(data)
+        // navigate(await login(data), { replace: true });
+        await login(data)
       } catch (error) {
         console.error('Error logging in:', error);
       }
