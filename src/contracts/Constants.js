@@ -1,5 +1,5 @@
 // export const OwnerContractAddress = '0x2855F9fdC4aDb2825a7fb03bE5d3eC3c8fEcE934'
 
-export const OwnerContractAddress = '0xe830aa8E13a454cb7b76c1Ff90979Cef8bEF06F0'
+export const OwnerContractAddress = '0xBAbEe9583580dae88B757c39cA2fbEA84B637D27'
 
-export const AdminAuthContractAddress = '0xd8b934580fcE35a11B58C6D73aDeE468a2833fa8'
+export const AdminAuthContractAddress = '0x416F8a5F85EE476EEA0a4A58285bf77305B83D4A'

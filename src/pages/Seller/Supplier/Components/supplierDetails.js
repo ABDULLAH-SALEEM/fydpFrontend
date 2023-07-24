@@ -54,11 +54,7 @@ const SupplierDetails = ({ handleClose, open, data, onClick }) => {
   };
 
   const verifyTransfer = async (id) => {
-    console.log('dfefefefefe');
-    // await window.ethereum.enable();
-    const vard="64ba8f9549600e42e0b43cea"
-    // const checkVar2 = await contract.getVal();
-    const checkVar2 = await contract.getOwnershipTransfersByOrder('64ba8f9549600e42e0b43cea');
+    const checkVar2 = await contract.getOwnershipTransfersByOrder('64bbe4c04a8d2bcb8ebd7947');
     console.log(checkVar2);
   };
 

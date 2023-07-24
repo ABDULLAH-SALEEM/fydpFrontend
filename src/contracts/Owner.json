@@ -1,46 +1,5 @@
 [
 	{
-		"inputs": [
-			{
-				"internalType": "string",
-				"name": "orderNumber",
-				"type": "string"
-			}
-		],
-		"name": "createPayOrder",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "string",
-				"name": "orderNumber",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "toUserId",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "fromUserId",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "transferTime",
-				"type": "string"
-			}
-		],
-		"name": "fulfillOrder",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
 		"anonymous": false,
 		"inputs": [
 			{
@@ -89,6 +48,131 @@
 		],
 		"name": "OwnershipTransferred",
 		"type": "event"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "orderNumber",
+				"type": "string"
+			}
+		],
+		"name": "createPayOrder",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "orderNumber",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "toUserId",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "fromUserId",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "transferTime",
+				"type": "string"
+			}
+		],
+		"name": "fulfillOrder",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "orderNumber",
+				"type": "string"
+			}
+		],
+		"name": "getOrderStatus",
+		"outputs": [
+			{
+				"internalType": "enum SupplyChain.OrderStatus",
+				"name": "",
+				"type": "uint8"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "orderNumber",
+				"type": "string"
+			}
+		],
+		"name": "getOwnershipTransfersByOrder",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "string",
+						"name": "fromUserId",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "toUserId",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "transferTime",
+						"type": "string"
+					}
+				],
+				"internalType": "struct SupplyChain.OwnershipTransfer[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"name": "payOrders",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "orderNumber",
+				"type": "string"
+			},
+			{
+				"internalType": "address payable",
+				"name": "currentOwner",
+				"type": "address"
+			},
+			{
+				"internalType": "enum SupplyChain.OrderStatus",
+				"name": "status",
+				"type": "uint8"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
 	},
 	{
 		"inputs": [
@@ -218,90 +302,6 @@
 		"name": "updateOrderStatus",
 		"outputs": [],
 		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "string",
-				"name": "orderNumber",
-				"type": "string"
-			}
-		],
-		"name": "getOrderStatus",
-		"outputs": [
-			{
-				"internalType": "enum SupplyChain.OrderStatus",
-				"name": "",
-				"type": "uint8"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "string",
-				"name": "orderNumber",
-				"type": "string"
-			}
-		],
-		"name": "getOwnershipTransfersByOrder",
-		"outputs": [
-			{
-				"components": [
-					{
-						"internalType": "string",
-						"name": "fromUserId",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "toUserId",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "transferTime",
-						"type": "string"
-					}
-				],
-				"internalType": "struct SupplyChain.OwnershipTransfer[]",
-				"name": "",
-				"type": "tuple[]"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "string",
-				"name": "",
-				"type": "string"
-			}
-		],
-		"name": "payOrders",
-		"outputs": [
-			{
-				"internalType": "string",
-				"name": "orderNumber",
-				"type": "string"
-			},
-			{
-				"internalType": "address payable",
-				"name": "currentOwner",
-				"type": "address"
-			},
-			{
-				"internalType": "enum SupplyChain.OrderStatus",
-				"name": "status",
-				"type": "uint8"
-			}
-		],
-		"stateMutability": "view",
 		"type": "function"
 	},
 	{
