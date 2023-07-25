@@ -1,7 +1,7 @@
 import axios from "axios";
 import { getToken } from "../helper/tokenHelper";
-const baseUrl = "http://localhost:5000/api/v1";
-// const baseUrl='https://fydp-alpha.vercel.app/api/v1'
+// const baseUrl = "http://localhost:5000/api/v1";
+const baseUrl='https://fydp-alpha.vercel.app/api/v1'
 
 
 export const axiosApi = async (method, url, data = {}, options = {}) => {
