@@ -15,7 +15,7 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import { UserListHead } from 'src/sections/@dashboard/user';
 
 const OrderTable = ({ data, onViewButtonClicked }) => {
-  console.log(data);
+  
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
 

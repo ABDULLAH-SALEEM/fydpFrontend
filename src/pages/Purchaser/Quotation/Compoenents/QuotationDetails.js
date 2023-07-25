@@ -99,7 +99,7 @@ const QuotationDetails = ({ data, open, handleChange, quotationUser }) => {
       if (resp) {
         const date = new Date();
         await createBlockChainOrder(resp.data._id);
-        await sendOrderFromPurchaserToSeller(resp.data._id, user._id, data.userId, date.toString());
+        await sendOrderFromPurchaserToSeller(resp.data._id, data.userId, user._id, date.toString());
         setLoading(false);
         showSnackBar(resp.message, 'success');
         navigate('/dashboard/orders');

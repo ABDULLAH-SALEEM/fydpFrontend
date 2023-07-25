@@ -144,13 +144,13 @@ const SupplierDetails = ({ handleClose, open, data, onClick }) => {
           disabled={loading}
           text={'assign order'}
           buttonProps={{ variant: 'contained' }}
-          // onClick={onSubmit}
-          onClick={verifyTransfer 
-          //   () =>{
-          //   verifyTransfer('64ba8f9549600e42e0b43cea')
-          // }
+          onClick={onSubmit}
+        //   onClick={verifyTransfer 
+        //   //   () =>{
+        //   //   verifyTransfer('64ba8f9549600e42e0b43cea')
+        //   // }
           
-        }
+        // }
         />
       </DialogActions>
     </Dialog>

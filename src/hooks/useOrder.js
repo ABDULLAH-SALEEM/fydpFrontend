@@ -56,11 +56,24 @@ export const useOrder = () => {
       console.log(err);
     }
   };
+
+  const getOwnerHistory=async(id)=>{
+    try{
+      const resp=axiosApi('get', `/auth/get-user-by-id/${id}`)
+      if (resp) {
+        return resp;
+      }
+
+    }catch(err){
+      console.log(err)
+    }
+  }
   return {
     createOrder,
     getUserOrders,
     getSingleOrder,
     getOrders,
     updateOrder,
+    getOwnerHistory
   };
 };

@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import { useInquiry } from 'src/hooks/useInquiry';
 import { useOrder } from 'src/hooks/useOrder';
 
+
 const style = {
   position: 'absolute',
   top: '50%',
@@ -23,15 +24,18 @@ const style = {
   p: 4,
 };
 
-const OrderDetails = ({ data, open, handleChange, quotation }) => {
 
+
+const OrderDetails = ({ data, open, handleChange, quotation, onOrderTrack }) => {
   return (
     <Modal open={open} onClose={handleChange}>
       <Box sx={style}>
-        <Typography mb={1} variant="h6" component="h2">
-          Order Details
-        </Typography>
-
+        <Stack justifyContent={'space-between'} alignItems={'center'} flexDirection={'row'}>
+          <Typography mb={1} variant="h6" component="h2">
+            Order Details
+          </Typography>
+          <LoaderButton text={'track'} buttonProps={{ variant: 'contained' }} onClick={() => onOrderTrack(data?._id)} />
+        </Stack>
         <Stack direction={'row'} gap={1} alignItems={'center'} mb={2}>
           <Typography>Status: </Typography>
           <Typography>{data?.status}</Typography>
@@ -71,6 +75,7 @@ const OrderDetails = ({ data, open, handleChange, quotation }) => {
           </Typography>
           <Typography variant="h6">Total : {quotation?.amount}</Typography>
         </Stack>
+        
       </Box>
     </Modal>
   );
