@@ -1,5 +1,5 @@
-import { Grid, Typography, Stack } from '@mui/material'
-import { styled } from '@mui/material/styles'
+import { Grid, Typography, Stack } from '@mui/material';
+import { styled } from '@mui/material/styles';
 
 const StyledFooter = styled(Grid)(({ theme }) => ({
   display: 'flex',
@@ -7,14 +7,14 @@ const StyledFooter = styled(Grid)(({ theme }) => ({
   justifyContent: 'space-evenly',
   backgroundColor: theme.palette.primary.main,
   paddingTop: '20px',
-  paddingBottom: '10px'
-}))
+  paddingBottom: '10px',
+}));
 
 export default function Footer() {
   return (
     <StyledFooter>
       <Grid sx={{ width: '30%' }}>
-        <Typography variant='h3' sx={{ my: 2, color: 'white' }}>
+        <Typography variant="h3" sx={{ my: 2, color: 'white' }}>
           AgroChain
         </Typography>
         <Typography sx={{ color: 'white' }}>
@@ -27,18 +27,18 @@ export default function Footer() {
       </Grid>
       <Grid>
         <Stack>
-          <Typography variant='h5' sx={{ marginBottom: 5, color: 'white' }}>
+          <Typography variant="h5" sx={{ marginBottom: 5, color: 'white' }}>
             Site
           </Typography>
-          <Typography sx={{ lineHeight: 2, color: 'white' }}>Sign In</Typography>
+          <Typography sx={{ lineHeight: 2, color: 'white' }}>Features</Typography>
+          <Typography sx={{ lineHeight: 2, color: 'white' }}>About us</Typography>
+          <Typography sx={{ lineHeight: 2, color: 'white' }}>Contact us</Typography>
           <Typography sx={{ lineHeight: 2, color: 'white' }}>Join Free</Typography>
-          <Typography sx={{ lineHeight: 2, color: 'white' }}>Search Suppliers</Typography>
-          <Typography sx={{ lineHeight: 2, color: 'white' }}>Search Buys Request</Typography>
         </Stack>
       </Grid>
       <Grid>
         <Stack>
-          <Typography variant='h5' sx={{ marginBottom: 5, color: 'white' }}>
+          <Typography variant="h5" sx={{ marginBottom: 5, color: 'white' }}>
             Policy
           </Typography>
           <Typography sx={{ lineHeight: 2, color: 'white' }}>Privacy</Typography>
@@ -49,5 +49,5 @@ export default function Footer() {
       </Grid>
       <Grid></Grid>
     </StyledFooter>
-  )
+  );
 }

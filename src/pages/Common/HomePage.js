@@ -5,6 +5,7 @@ import FeaturesCard from './Components/FeatureCard';
 import Section4 from './Components/Section4';
 import Section3 from './Components/Section3';
 import Footer from './Components/Footer';
+import Navbar from './Components/Navbar';
 
 const HeroBanner = styled(CardContent)(({ url }) => ({
   backgroundImage: `url(${url})`,
@@ -26,6 +27,7 @@ const ContactUs = styled(Grid)(({ theme }) => ({
 const HomePage = () => {
   return (
     <Grid>
+      <Navbar />
       <HeroBanner url={'/assets/images/herobanner.jpeg'}>
         <Grid sx={{ marginTop: -20, marginBottom: 5 }}>
           <Typography variant="h1" color="primary">
