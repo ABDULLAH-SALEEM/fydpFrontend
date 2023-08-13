@@ -7,7 +7,7 @@ import { useSnack } from "src/hooks/useSnack";
 
 
 export default function OtpCountdown() {
-  const [counter, setCounter] = useState(60);
+  const [counter, setCounter] = useState(120);
   const navigate = useNavigate();
   const { removeOtp } = useOtp()
   const { showSnackBar } = useSnack()

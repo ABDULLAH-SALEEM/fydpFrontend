@@ -3,29 +3,6 @@
 		"inputs": [
 			{
 				"internalType": "string",
-				"name": "purchaserId",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "sellerId",
-				"type": "string"
-			},
-			{
-				"internalType": "uint8",
-				"name": "rating",
-				"type": "uint8"
-			}
-		],
-		"name": "rateSeller",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "string",
 				"name": "sellerId",
 				"type": "string"
 			}
@@ -56,6 +33,29 @@
 			}
 		],
 		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "purchaserId",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "sellerId",
+				"type": "string"
+			},
+			{
+				"internalType": "uint8",
+				"name": "rating",
+				"type": "uint8"
+			}
+		],
+		"name": "rateSeller",
+		"outputs": [],
+		"stateMutability": "nonpayable",
 		"type": "function"
 	}
 ]
