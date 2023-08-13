@@ -3,3 +3,5 @@
 export const OwnerContractAddress = '0x413a4D386062D63F7EC58698E7a488eabB62Ae7C'
 
 export const AdminAuthContractAddress = '0xf35F27173d7228088c0A5cD2B167e42a22Fd574d'
+
+export const RatingContractAddress= '0xbe505327b40938d381812127ED8f1AbcAdFA7F12'

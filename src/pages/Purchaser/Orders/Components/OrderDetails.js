@@ -1,4 +1,4 @@
-import { Avatar, Typography, Grid, Stack, TextField, Modal, Box, Select, MenuItem } from '@mui/material';
+import { Avatar, Typography, Grid, Stack, TextField, Modal, Box, Select, MenuItem ,Button} from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { removeData, retrieveData } from 'src/helper/storageHelper';
 import { useAuth } from 'src/hooks/useAuth';
@@ -8,7 +8,6 @@ import { useSnack } from 'src/hooks/useSnack';
 import { useNavigate } from 'react-router-dom';
 import { useInquiry } from 'src/hooks/useInquiry';
 import { useOrder } from 'src/hooks/useOrder';
-
 
 const style = {
   position: 'absolute',
@@ -24,9 +23,9 @@ const style = {
   p: 4,
 };
 
+const OrderDetails = ({ data, open, handleChange, quotation, onOrderTrack,handleRatingModal }) => {
+  const {user}=useAuth()
 
-
-const OrderDetails = ({ data, open, handleChange, quotation, onOrderTrack }) => {
   return (
     <Modal open={open} onClose={handleChange}>
       <Box sx={style}>
@@ -75,7 +74,8 @@ const OrderDetails = ({ data, open, handleChange, quotation, onOrderTrack }) => 
           </Typography>
           <Typography variant="h6">Total : {quotation?.amount}</Typography>
         </Stack>
-        
+        {data?.status==='Shipped' &&  user.role==='Purchaser' &&   <Button variant="contained" onClick={handleRatingModal}>Accept Order</Button>}
+
       </Box>
     </Modal>
   );
