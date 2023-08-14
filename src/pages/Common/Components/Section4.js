@@ -1,35 +1,35 @@
-import { Grid, Typography, FormControl, TextField, Button, InputLabel } from '@mui/material'
-import { useForm, Controller } from 'react-hook-form'
-import FormHelperText from '@mui/material/FormHelperText'
-import * as yup from 'yup'
-import { yupResolver } from '@hookform/resolvers/yup'
+import { Grid, Typography, FormControl, TextField, Button, InputLabel } from '@mui/material';
+import { useForm, Controller } from 'react-hook-form';
+import FormHelperText from '@mui/material/FormHelperText';
+import * as yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
 
 let defaultValues = {
   name: '',
   email: '',
-  message: ''
-}
+  message: '',
+};
 export default function Section4() {
   const schema = yup.object().shape({
     name: yup.string().required('Name is a required field'),
     message: yup.string().required('Message is a required field'),
-    email: yup.string().email('Invalid email').required('Email is a required field')
-  })
+    email: yup.string().email('Invalid email').required('Email is a required field'),
+  });
 
   const {
     handleSubmit,
     control,
     formState: { errors },
     reset,
-    getValues
+    getValues,
   } = useForm({
     defaultValues,
     mode: 'onChange',
-    resolver: yupResolver(schema)
-  })
-  const onSubmit = data => {
-    console.log(data)
-  }
+    resolver: yupResolver(schema),
+  });
+  const onSubmit = (data) => {
+    console.log(data);
+  };
 
   return (
     <Grid
@@ -41,16 +41,14 @@ export default function Section4() {
         justifyContent: 'center',
         flexDirection: 'column',
         paddingTop: 20,
-        paddingBottom: 20
+        paddingBottom: 20,
       }}
     >
       <Grid>
-        <Typography color={'primary'} variant='h3' sx={{ marginBottom: 5, textAlign: 'center' }}>
+        <Typography color={'primary'} variant="h3" sx={{ marginBottom: 5, textAlign: 'center' }}>
           Or Drop us a Query!
         </Typography>
-        <Typography>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras cursus vitae turpis sit amet pulvinar.
-        </Typography>
+        <Typography>We look forward to hearing from you and assisting you on your journey with AgroChain!</Typography>
       </Grid>
       <Grid sx={{ marginTop: 10 }}>
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -59,7 +57,7 @@ export default function Section4() {
               <InputLabel>Name*</InputLabel>
               <FormControl fullWidth>
                 <Controller
-                  name='name'
+                  name="name"
                   control={control}
                   rules={{ required: true }}
                   render={({ field: { value, onChange } }) => (
@@ -73,7 +71,7 @@ export default function Section4() {
               <InputLabel>Email*</InputLabel>
               <FormControl fullWidth>
                 <Controller
-                  name='email'
+                  name="email"
                   control={control}
                   rules={{ required: true }}
                   render={({ field: { value, onChange } }) => (
@@ -92,7 +90,7 @@ export default function Section4() {
               <InputLabel>Message*</InputLabel>
               <FormControl fullWidth>
                 <Controller
-                  name='message'
+                  name="message"
                   control={control}
                   rules={{ required: true }}
                   render={({ field: { value, onChange } }) => (
@@ -111,7 +109,7 @@ export default function Section4() {
               </FormControl>
             </Grid>
             <Grid item xs={12}>
-              <Button type='submit' variant='contained'>
+              <Button type="submit" variant="contained">
                 Submit
               </Button>
             </Grid>
@@ -119,5 +117,5 @@ export default function Section4() {
         </form>
       </Grid>
     </Grid>
-  )
+  );
 }

@@ -36,24 +36,27 @@ const HomePage = () => {
         </Grid>
         <Grid sx={{ marginBottom: 10 }}>
           <Typography variant="h5" color="white">
-            "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."
+            "A Blockchain Revolutionized Integrated Supply Chain Model."
           </Typography>
         </Grid>
         <Stack alignItems="center" flexWrap="wrap" justifyContent="center" direction="row" spacing={7}>
           <Button variant="contained" sx={{ height: 50 }}>
-            Neque porro
+            Get started
           </Button>
           <Button variant="outlined" sx={{ height: 50 }}>
-            Neque porro
+            Learn more
           </Button>
         </Stack>
       </HeroBanner>
 
       <Grid sx={{ marginTop: -15 }}>
         <Stack alignItems="center" flexWrap="wrap" justifyContent="center" direction="row" spacing={7}>
-          <FeaturesCard />
-          <FeaturesCard />
-          <FeaturesCard />
+          <FeaturesCard
+            heading="Rating mechanism"
+            description="This system plays a crucial role in building trust and transparency among users. By allowing individuals to provide ratings, it promotes accountability and openness, ultimately fostering a sense of reliability and confidence within the community. This approach creates an environment where information is readily available and trustworthy, enhancing user interactions and relationships."
+          />
+          <FeaturesCard heading="Order tracking" description="" />
+          <FeaturesCard heading="Ownership transfer" description="" />
         </Stack>
       </Grid>
 
@@ -63,21 +66,22 @@ const HomePage = () => {
         flexWrap="wrap"
         justifyContent="center"
         direction="row"
-        spacing={40}
+        spacing={20}
       >
         <Grid sx={{ width: '25%' }}>
-          <Typography sx={{ marginBottom: 3 }}>Lorem Ipsum</Typography>
+          <Typography sx={{ marginBottom: 3 }}>Digitization</Typography>
           <Typography sx={{ marginBottom: 3 }} variant="h3">
-            Neque porro quisquam est qui dolorem
+            Digitize of agricultural process
           </Typography>
           <Typography sx={{ marginBottom: 3 }}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras cursus vitae turpis sit amet pulvinar. Sed
-            vitae urna ultrices, malesuada est sed, posuere orci.
+            Digitize the manual agricultural and food supply chain onto a completely automated model by providing a web
+            portal for the purchasers and sellers to engage with each other in a secure manner with separate views for
+            both parties.
           </Typography>
-          <Button variant="contained">Lorem Ipsum</Button>
+          <Button variant="contained">Learn more</Button>
         </Grid>
-        <Grid sx={{ width: '25%' }}>
-          <img width={'100%'} src="https://oceanking.com.pk/wp-content/uploads/2021/10/Rectangle-594-1-1024x860.jpg" />
+        <Grid sx={{ width: '35%' }}>
+          <img width={'100%'} src="/assets/images/digitization.jpeg" />
         </Grid>
       </Stack>
 
@@ -87,21 +91,21 @@ const HomePage = () => {
         flexWrap="wrap"
         justifyContent="center"
         direction="row"
-        spacing={40}
+        spacing={20}
       >
-        <Grid sx={{ width: '25%' }}>
-          <img width={'100%'} src="https://oceanking.com.pk/wp-content/uploads/2021/10/Rectangle-594-1-1024x860.jpg" />
+        <Grid sx={{ width: '35%' }}>
+          <img width={'100%'} src="/assets/images/tamperproof.jpeg" />
         </Grid>
         <Grid sx={{ width: '25%' }}>
-          <Typography sx={{ marginBottom: 3 }}>Lorem Ipsum</Typography>
+          <Typography sx={{ marginBottom: 3 }}>Tamper Proof</Typography>
           <Typography sx={{ marginBottom: 3 }} variant="h3">
-            Neque porro quisquam est qui dolorem
+            integrity of the whole export
           </Typography>
           <Typography sx={{ marginBottom: 3 }}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras cursus vitae turpis sit amet pulvinar. Sed
-            vitae urna ultrices, malesuada est sed, posuere orci.
+            Ensure the integrity of the whole export procedure by making sure that no data is tampered in between the
+            whole procedure by implementing Blockchain technology.
           </Typography>
-          <Button variant="contained">Lorem Ipsum</Button>
+          <Button variant="contained">Learn more</Button>
         </Grid>
       </Stack>
 
@@ -111,21 +115,21 @@ const HomePage = () => {
         flexWrap="wrap"
         justifyContent="center"
         direction="row"
-        spacing={40}
+        spacing={20}
       >
         <Grid sx={{ width: '25%' }}>
-          <Typography sx={{ marginBottom: 3 }}>Lorem Ipsum</Typography>
+          <Typography sx={{ marginBottom: 3 }}>End-to-End User Trust</Typography>
           <Typography sx={{ marginBottom: 3 }} variant="h3">
-            Neque porro quisquam est qui dolorem
+            Remove the intermediaries
           </Typography>
           <Typography sx={{ marginBottom: 3 }}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras cursus vitae turpis sit amet pulvinar. Sed
-            vitae urna ultrices, malesuada est sed, posuere orci.
+            Provide disintermediation to remove the intermediaries in the whole process to reduce transaction costs and
+            secure transactions. End-to-end user visibility with the help of Blockchain technology.
           </Typography>
-          <Button variant="contained">Lorem Ipsum</Button>
+          <Button variant="contained">Learn more</Button>
         </Grid>
-        <Grid sx={{ width: '25%' }}>
-          <img width={'100%'} src="https://oceanking.com.pk/wp-content/uploads/2021/10/Rectangle-594-1-1024x860.jpg" />
+        <Grid sx={{ width: '35%' }}>
+          <img width={'100%'} src="/assets/images/integrity.jpeg" />
         </Grid>
       </Stack>
 
@@ -141,8 +145,8 @@ const HomePage = () => {
             spacing={10}
           >
             <Grid sx={{ width: '40%' }}>
-              <Typography variant="h4">
-                Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...
+              <Typography variant="h4" color="white">
+                Have questions or want to know more about AgroChain? We're here to help. Feel free to reach out to us
               </Typography>
             </Grid>
             <Button color="secondary" variant="contained">

@@ -18,11 +18,10 @@ export default function Footer() {
           AgroChain
         </Typography>
         <Typography sx={{ color: 'white' }}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras cursus vitae turpis sit amet pulvinar. Sed vitae
-          urna ultrices, malesuada est sed, posuere orci. Mauris nec diam mauris. Vestibulum molestie nulla et urna
-          iaculis, eget dignissim ante sodales. Ut lobortis, leo varius ultricies feugiat, libero sem auctor leo, at
-          maximus purus lectus at justo. Nam suscipit, enim in semper tempus, eros dolor maximus lacus, a pulvinar
-          turpis turpis in purus. Nulla rhoncus ligula finibus venenatis sodales.
+          AgroChain is a cutting-edge web application that revolutionizes the integrated supply chain model, making
+          agricultural trade more efficient, transparent, and secure. With a focus on security and accountability,
+          AgroChain implements blockchain technology and redefines how the agricultural industry manages its supply
+          chain, setting new standards for reliability and innovation.
         </Typography>
       </Grid>
       <Grid>
