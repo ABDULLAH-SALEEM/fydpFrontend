@@ -47,10 +47,12 @@ const PurchaserOrders = () => {
       // if (arrayTemp.length) {
       //   arrayTemp.length = 0;
       // }
+      
+      const checkVar2 = await contract.getOwnershipTransfersByOrder(id);
+      console.log(checkVar2)
+      await getUsers(checkVar2);
       setOpen(false);
       setHistoryOpen(true);
-      const checkVar2 = await contract.getOwnershipTransfersByOrder(id);
-      await getUsers(checkVar2);
       setLoading(false);
     } catch (err) {
       setLoading(false);

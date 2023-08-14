@@ -37,21 +37,23 @@ const SellerDashboard = () => {
         <Typography variant="h4" sx={{ mb: 5 }}>
           Hi, Welcome back {user?.email}
         </Typography>
-
+        <Typography variant='h5' color={"primary"} mb={2}>Ratings</Typography>
         <Grid container spacing={3}>
+         
+
           <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="5 star" total={'5'} icon={'bx:happy'} showIcon />
+            <AppWidgetSummary title="5 star" total={sellerDashboard?.ratings.fiveStarCount} icon={'bx:happy'} showIcon />
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="4 star" total={'4'} color="info" icon={'cil:happy'} showIcon />
+            <AppWidgetSummary title="4 star" total={sellerDashboard?.ratings.fourStarCount} color="info" icon={'cil:happy'} showIcon />
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="3 star" total={'3'} color="warning" icon={'mdi:face-sad-outline'} showIcon />
+            <AppWidgetSummary title="3 star" total={sellerDashboard?.ratings.threeStarCount} color="warning" icon={'mdi:face-sad-outline'} showIcon />
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
             <AppWidgetSummary
               title="2 star"
-              total={'2'}
+              total={sellerDashboard?.ratings.twoStarCount}
               color="error"
               icon={'icon-park-twotone:worried-face'}
               showIcon

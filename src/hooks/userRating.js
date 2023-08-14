@@ -1,9 +1,9 @@
 import { axiosApi } from 'src/service/apiEnviornment';
 
 export const useRating = () => {
-  const getRatings = async () => {
+  const getRatings = async (id) => {
     try {
-      const resp = axiosApi('get', `/rating/get-all-rating`);
+      const resp = axiosApi('get', `/rating/get-all-rating/${id}`);
       if (resp) {
         return resp;
       }
@@ -11,6 +11,8 @@ export const useRating = () => {
       return Promise.reject(err);
     }
   };
+
+
 
   const createRating= (data) => {
     try {

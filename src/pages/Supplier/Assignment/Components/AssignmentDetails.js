@@ -49,7 +49,7 @@ const AssignmentDetails = ({ handleClose, open, data, onClick }) => {
       if (resp) {
         const date = new Date();
 
-        await sendOrderFromSupplierToSeller(orderId._id, data.assignedBy._id, user._id, date, toString());
+        await sendOrderFromSupplierToSeller(orderId._id, data.assignedBy._id, user._id, date.toString());
         setLoading(false);
         showSnackBar('Assignment completed successfully', 'success');
       }

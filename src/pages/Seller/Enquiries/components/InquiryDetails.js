@@ -24,7 +24,7 @@ const InquiryDetails = ({ handleClose, open, data, onQuotationButtonClicked }) =
 
         <Stack direction="row" gap={2} mb={2}>
           <Typography>Quantity:</Typography>
-          <Typography>{quantity}</Typography>
+          <Typography>{quantity} Tons</Typography>
         </Stack>
 
         <Stack direction="row" gap={2} mb={2}>

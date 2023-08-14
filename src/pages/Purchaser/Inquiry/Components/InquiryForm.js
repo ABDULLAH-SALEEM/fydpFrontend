@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Grid, FormControl, TextField, Button, InputLabel } from '@mui/material';
+import { Grid, FormControl, TextField, Button, InputLabel, Select, MenuItem } from '@mui/material';
 
 import { useForm, Controller } from 'react-hook-form';
 import FormHelperText from '@mui/material/FormHelperText';
@@ -19,6 +19,7 @@ let defaultValues = {
   quantity: '',
   address: '',
   product: '',
+  unit:""
 };
 
 export default function BuyRequirementsForm() {
@@ -27,11 +28,14 @@ export default function BuyRequirementsForm() {
     req: yup.string().required('Description is a required field'),
     email: yup.string().email('Invalid email'),
     phoneNumber: yup.string().required('Phone number is a required field'),
-    quantity: yup.string().required('Quantity is a required field'),
+    quantity: yup.number().required('Quantity is a required field'),
+    unit:yup.string().required('Unit is a required field'),
     address: yup.string().required('Address is a required field'),
   });
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const unitsArray = ['Kilogram (kg)', 'Ton (t)', 'Pound (lb)'];
+
 
   const { user } = useAuth();
   const { createInquiry } = useInquiry();
@@ -121,15 +125,33 @@ export default function BuyRequirementsForm() {
               control={control}
               rules={{ required: true }}
               render={({ field: { value, onChange } }) => (
-                <TextField
-                  value={value}
-                  onChange={onChange}
-                  error={Boolean(errors.quantity)}
-                  placeholder={'E.G. 10 Tons'}
-                />
+                <TextField value={value} onChange={onChange} error={Boolean(errors.quantity)} placeholder={'E.G. 10'} />
               )}
             />
             {errors.quantity && <FormHelperText sx={{ color: 'error.main' }}>{errors.quantity.message}</FormHelperText>}
+          </FormControl>
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <InputLabel>unit</InputLabel>
+          <FormControl fullWidth>
+            <Controller
+              name="Unit"
+              control={control}
+              rules={{ required: true }}
+              render={({ field: { value, onChange } }) => (
+                <Select value={value} onChange={onChange} error={Boolean(errors.unit)} placeholder={'Tons'}>
+                  <MenuItem value={''} disabled>
+                    Choose unit
+                  </MenuItem>
+                  {unitsArray.map((unit, idx) => (
+                    <MenuItem key={idx} value={unit}>
+                      {unit}
+                    </MenuItem>
+                  ))}
+                </Select>
+              )}
+            />
+            {errors.unit && <FormHelperText sx={{ color: 'error.main' }}>{errors.unit.message}</FormHelperText>}
           </FormControl>
         </Grid>
         <Grid item xs={12} md={6}>
