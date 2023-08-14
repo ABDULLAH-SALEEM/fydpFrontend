@@ -19,7 +19,7 @@ let defaultValues = {
   quantity: '',
   address: '',
   product: '',
-  unit:""
+  // unit: '',
 };
 
 export default function BuyRequirementsForm() {
@@ -29,13 +29,12 @@ export default function BuyRequirementsForm() {
     email: yup.string().email('Invalid email'),
     phoneNumber: yup.string().required('Phone number is a required field'),
     quantity: yup.number().required('Quantity is a required field'),
-    unit:yup.string().required('Unit is a required field'),
+    // unit: yup.string().required('Unit is a required field'),
     address: yup.string().required('Address is a required field'),
   });
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const unitsArray = ['Kilogram (kg)', 'Ton (t)', 'Pound (lb)'];
-
 
   const { user } = useAuth();
   const { createInquiry } = useInquiry();
@@ -137,7 +136,7 @@ export default function BuyRequirementsForm() {
             <Controller
               name="Unit"
               control={control}
-              rules={{ required: true }}
+              
               render={({ field: { value, onChange } }) => (
                 <Select value={value} onChange={onChange} error={Boolean(errors.unit)} placeholder={'Tons'}>
                   <MenuItem value={''} disabled>
@@ -151,7 +150,7 @@ export default function BuyRequirementsForm() {
                 </Select>
               )}
             />
-            {errors.unit && <FormHelperText sx={{ color: 'error.main' }}>{errors.unit.message}</FormHelperText>}
+            
           </FormControl>
         </Grid>
         <Grid item xs={12} md={6}>
