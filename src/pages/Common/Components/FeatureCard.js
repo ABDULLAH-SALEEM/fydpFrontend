@@ -22,7 +22,7 @@ const StyledGrid = styled(Grid)(({ theme }) => ({
 
 export default function FeaturesCard({ heading, description }) {
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 345, height:300 }}>
       <CardContent>
         <StyledGrid>
           <GavelIcon style={{ color: 'white' }} />

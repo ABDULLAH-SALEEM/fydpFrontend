@@ -53,10 +53,13 @@ const HomePage = () => {
         <Stack alignItems="center" flexWrap="wrap" justifyContent="center" direction="row" spacing={7}>
           <FeaturesCard
             heading="Rating mechanism"
-            description="This system plays a crucial role in building trust and transparency among users. By allowing individuals to provide ratings, it promotes accountability and openness, ultimately fostering a sense of reliability and confidence within the community. This approach creates an environment where information is readily available and trustworthy, enhancing user interactions and relationships."
+            description="AgroChain's comprehensive review system empowers purchasers to share their experiences by giving ratings to different sellers . This mechanism fosters accountability, encourages best practices, and helps participants make informed decisions."
           />
-          <FeaturesCard heading="Order tracking" description="" />
-          <FeaturesCard heading="Ownership transfer" description="" />
+          <FeaturesCard
+            heading="Order tracking"
+            description="Stay informed with real-time insights into the journey of your agricultural products. AgroChain empowers participants to monitor every step of the supply chain, from sourcing to delivery, ensuring transparency and accountability at all stages."
+          />
+          <FeaturesCard heading="Traceability" description="With a supply chain DAPP, the entire supply chain can be represented as a blockchain network, where participants can access and add data to the shared ledger in real-time." />
         </Stack>
       </Grid>
 
